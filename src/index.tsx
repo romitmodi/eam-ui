@@ -6,11 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
-import JiraTableComponent from "./components/JiraTable";
+import JiraTableComponent from "./components/SnowJiraTable";
 import CreateNewRequest from "./components/CreateNewRequest";
 import SelAndApproveTickets2 from "./components/ApproveTable";
 import Layout from "./components/Layout";
 import Login from './components/Login';
+import EmployeeTicketsTable from './components/EmployeeTickets';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -24,7 +25,7 @@ root.render(
 
           <Route path="Login" element={<Login/>} /> 
             <Route path="Layout" element={<Layout/>} /> 
-            <Route path="/Table" element={<JiraTableComponent />} />
+            <Route path="/EmployeeDashBoard" Component={EmployeeTicketsTable}/>
             <Route path="/NewReq" Component={CreateNewRequest} />
             <Route path="/ApprovReqs" element={<SelAndApproveTickets2 />} />
           </Route>

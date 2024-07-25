@@ -34,7 +34,7 @@ function setLvl(level:number)
           Login
         </button>
 
-        <button className="lyds-dash-button" onClick={() => navigate('Table', { replace: true })}>
+        <button className="lyds-dash-button" onClick={() => navigate('EmployeeDashBoard', { replace: true })}>
           Employee Dashboard
         </button>
 

@@ -1,5 +1,11 @@
 import DataTable, { createTheme } from 'react-data-table-component';
-import dat from '../data/JIRAData.json'
+import dat from '../data/EmployeeTickets.json'
+import SnowJiraTableComponent from './SnowJiraTable';
+
+
+import dat2 from '../data/JIRAData.json'
+import { wrap } from 'module';
+import SnowJiraTableComponent2 from './SnowJiraTable copy';
 
 
 
@@ -33,49 +39,46 @@ createTheme('solarized', {
 
 const columns = [
 	{
-		name: 'Created On',
-		selector: (row: { createdOn: any; }) => {
-            return row.createdOn;
+		name: 'Ticked ID',
+		selector: (row: { id: any; }) => {
+            return row.id;
         },
 		sortable: true,
 	},
 	{ 
-		name: 'Jira Status',
+		name: 'Ticket Status',
 		selector: (row: { status: any; }) => {
             return row.status;
         },
 		sortable: true,
 	},
-    {
-		name: 'Jira Link',
-        button: true,
-		cell: (row: { jiraURL: any, jiraID:any; } )=> (
-			<a href={row.jiraURL} target="_blank" rel="noopener noreferrer">
-				{row.jiraID}
-			</a>
+    { 
+		name: 'Ticket Details',
+        cell: (row: { ticketDetails: any } )=> (
+            
+            <table>
+            <th><td>ID</td><td>Status</td><td>URL</td></th>
+            {row.ticketDetails.forEach}
+            <tr><td>{row.ticketDetails[0].id}</td><td>{row.ticketDetails[0].status}</td><td><a href={row.ticketDetails[0].url}/></td></tr>
+           
+            </table>
 		),
-		// selector: (row: { jiraURL: any; }) => {
-        //     return row.jiraURL;
-        // },
-		sortable: false,
+
 	},
 ];
 
+const data = dat;
 
-
-const data = dat.Tickets;
-
-export default function JiraTableComponent() {
+export default function EmployeeTicketsTable() {
+    
 	return (
     <form className='form'>
 		<DataTable
 			columns={columns}
 			data={data}
             theme="solarized"
+			expandableRows expandableRowsComponent ={SnowJiraTableComponent2}
 		/>
     </form>
 	);
 };
-
-
-export const empName = dat.name;

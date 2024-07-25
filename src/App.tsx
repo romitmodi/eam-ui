@@ -7,7 +7,7 @@ import DataTable, { createTheme } from 'react-data-table-component';
 import React from 'react';
 
 import reportWebVitals from './reportWebVitals';
-import JiraTableComponent from "./components/JiraTable";
+import JiraTableComponent from "./components/SnowJiraTable";
 import SelectPlatformLabFeatureTeamRole from "./components/CreateNewRequest";
 import SelAndApproveTickets from "./components/CreateNewReq";
 import SelAndApproveTickets2 from "./components/ApproveTable";
