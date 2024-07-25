@@ -1,0 +1,96 @@
+[
+    {
+        "id": 9,
+        "status": "IN_PROGRESS",
+        "approverId": 1,
+        "requestorTeamId": 1,
+        "requestCreatedBy": 15,
+        "requestorRole": "ROLE_DEVOPS",
+        "ticketDetails": [ {
+            "id": 1,
+            "status": "CREATED",
+            "url": "http://jira.com"
+        },
+        {
+            "id": 3,
+            "status": "APPROVED",
+            "url": "https://jira.com"
+        },
+        {
+            "id": 2,
+            "status": "IN_PROGRESS",
+            "url": "http://jira.com"
+        }]
+    },
+    {
+        "id": 8,
+        "status": "IN_PROGRESS",
+        "approverId": 356,
+        "requestorTeamId": 2,
+        "requestCreatedBy": 15,
+        "requestorRole": "ROLE_DEVOPS",
+        "ticketDetails": [
+            {
+                "id": 1,
+                "status": "CREATED",
+                "url": "http://jira.com"
+            },
+            {
+                "id": 3,
+                "status": "APPROVED",
+                "url": "https://jira.com"
+            },
+            {
+                "id": 2,
+                "status": "IN_PROGRESS",
+                "url": "http://jira.com"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "status": "IN_PROGRESS",
+        "approverId": 1,
+        "requestorTeamId": 1,
+        "requestCreatedBy": 15,
+        "requestorRole": "ROLE_DEVOPS",
+        "ticketDetails": [ {
+            "id": 1,
+            "status": "CREATED",
+            "url": "http://jira.com"
+        },
+        {
+            "id": 3,
+            "status": "APPROVED",
+            "url": "https://jira.com"
+        },
+        {
+            "id": 2,
+            "status": "IN_PROGRESS",
+            "url": "http://jira.com"
+        }]
+    },
+    {
+        "id": 11,
+        "status": "IN_PROGRESS",
+        "approverId": 1,
+        "requestorTeamId": 1,
+        "requestCreatedBy": 15,
+        "requestorRole": "ROLE_DEVOPS",
+        "ticketDetails": [ {
+            "id": 1,
+            "status": "CREATED",
+            "url": "http://jira.com"
+        },
+        {
+            "id": 3,
+            "status": "APPROVED",
+            "url": "https://jira.com"
+        },
+        {
+            "id": 2,
+            "status": "IN_PROGRESS",
+            "url": "http://jira.com"
+        }]
+    }
+]
