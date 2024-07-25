@@ -1,0 +1,59 @@
+{
+   
+    "EmpID": "560XX45",
+    "EmpName": "Nikhil K",
+    "Tickets": [
+      {
+        "TicketID": "REQ137411",
+        "status": "Needs Approval",
+        "Reportee":"Amar",
+        "ReporteeID":"239235",
+        "createdOn": "22-4-2024"
+      },
+      {
+        "TicketID": "REQ137412",
+        "status": "Needs Approval",
+        "Reportee":"Amit",
+        "ReporteeID":"234235",
+        "createdOn": "26-4-1924"
+      },
+    
+      {
+        "TicketID": "REQ137414",
+        "status": "Needs Approval",
+        "Reportee":"Nihal",
+        "ReporteeID":"234935",
+        "createdOn": "22-4-2024"
+      },
+      {
+        "TicketID": "REQ137415",
+        "status": "Approved",
+        "Reportee":"U Pradhan",
+        "ReporteeID":"234439",
+        "createdOn": "22-4-2024"
+      },
+      {
+        "TicketID": "REQ137411",
+        "status": "Needs Approval",
+        "Reportee":"Sunhit",
+        "ReporteeID":"232235",
+        "createdOn": "22-4-2024"
+      },
+      {
+        "TicketID": "REQ137412",
+        "status": "Needs Approval",
+        "Reportee":"MS Dhawal",
+        "ReporteeID":"3456654",
+        "createdOn": "26-4-1924"
+      },
+      {
+        "TicketID": "REQ137413",
+        "status": "Approved",
+        "Reportee":"Shekar",
+        "ReporteeID":"234135",
+        "createdOn": "22-4-2024"
+      }
+     
+    ]
+  }
+  

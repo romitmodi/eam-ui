@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "name": "Consumer RelationShip",
+        "labDetails": [
+            {
+                "id": 1,
+                "name": "Mass Affluent",
+                "teamDetails": [
+                    {
+                        "id": 1,
+                        "name": "Financial Goals",
+                        "elId": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Consumer Learning",
+        "labDetails": [
+            {
+                "id": 2,
+                "name": "Test Lab",
+                "teamDetails": [
+                    {
+                        "id": 2,
+                        "name": "INF",
+                        "elId": 356
+                    }
+                ]
+            }
+        ]
+    }
+]
