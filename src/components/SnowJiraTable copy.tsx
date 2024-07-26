@@ -65,14 +65,3 @@ const columns = [
 
 const data = dat[0].ticketDetails;
 
-export default function SnowJiraTableComponent2() {
-	return (
-    <form className='form'>
-		<DataTable
-			columns={columns}
-			data={data}
-            theme="solarized"
-		/>
-    </form>
-	);
-};
