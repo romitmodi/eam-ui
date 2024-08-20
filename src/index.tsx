@@ -23,11 +23,11 @@ root.render(
         <Routes>
           <Route path="/" element={<App />}>
 
-          <Route path="Login" element={<Login/>} /> 
+          <Route path="/Login" element={<Login/>} /> 
             <Route path="Layout" element={<Layout/>} /> 
-            <Route path="/EmployeeDashBoard" Component={EmployeeTicketsTable}/>
-            <Route path="/NewReq" Component={CreateNewRequest} />
-            <Route path="/ApprovReqs" element={<SelAndApproveTickets2 />} />
+            <Route path="/Layout/EmployeeDashBoard" Component={EmployeeTicketsTable}/>
+            <Route path="/Layout/NewReq" Component={CreateNewRequest} />
+            <Route path="/Layout/ApprovReqs" element={<SelAndApproveTickets2 />} />
           </Route>
         </Routes>
       </>

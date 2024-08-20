@@ -17,7 +17,7 @@ import {
 import { Ticket } from '../data/makeData'
 var level;
 
-export default function SelAndApproveTickets2():any {
+export default function SelAndApproveTickets2(): any {
   const rerender = React.useReducer(() => ({}), {})[1]
   level = 2
   const [rowSelection, setRowSelection] = React.useState({})
@@ -106,198 +106,200 @@ export default function SelAndApproveTickets2():any {
     debugTable: true,
   })
 
-  if ((level)>1) {
+  if ((level) > 1) {
     return (
-      <form className='form'>
-        <br/>
-        <br/>
-      <div className="p-2">
-        <div>
-          <input
-            value={globalFilter ?? ''}
-            onChange={e => setGlobalFilter(e.target.value)}
-            className="p-2 font-lg shadow border border-block"
-            placeholder="Search all columns..."
-          />
-        </div>
-        <br/>
-        <div className="h-2" />
-        <table>
-          <thead>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map(header => {
-                  return (
-                    <th key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder ? null : (
-                        <>
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
+      <>
+        <h1 className="screenheader">Approval Requests</h1>
+        <form className='form'>
+          <br />
+          <br />
+          <div className="p-2">
+            <div>
+              <input
+                value={globalFilter ?? ''}
+                onChange={e => setGlobalFilter(e.target.value)}
+                className="p-2 font-lg shadow border border-block"
+                placeholder="Search all columns..."
+              />
+            </div>
+            <br />
+            <div className="h-2" />
+            <table>
+              <thead>
+                {table.getHeaderGroups().map(headerGroup => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map(header => {
+                      return (
+                        <th key={header.id} colSpan={header.colSpan}>
+                          {header.isPlaceholder ? null : (
+                            <>
+                              {flexRender(
+                                header.column.columnDef.header,
+                                header.getContext()
+                              )}
+                              {header.column.getCanFilter() ? (
+                                <div>
+                                  <Filter column={header.column} table={table} />
+                                </div>
+                              ) : null}
+                            </>
                           )}
-                          {header.column.getCanFilter() ? (
-                            <div>
-                              <Filter column={header.column} table={table} />
-                            </div>
-                          ) : null}
-                        </>
-                      )}
-                    </th>
+                        </th>
+                      )
+                    })}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map(row => {
+                  return (
+                    <tr key={row.id}>
+                      {row.getVisibleCells().map(cell => {
+                        return (
+                          <td key={cell.id}>
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
+                          </td>
+                        )
+                      })}
+                    </tr>
                   )
                 })}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map(row => {
-              return (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map(cell => {
-                    return (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    )
-                  })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td className="p-1">
+                    <IndeterminateCheckbox
+                      {...{
+                        checked: table.getIsAllPageRowsSelected(),
+                        indeterminate: table.getIsSomePageRowsSelected(),
+                        onChange: table.getToggleAllPageRowsSelectedHandler(),
+                      }}
+                    />
+                  </td>
+                  <td colSpan={20}>Page Rows ({table.getRowModel().rows.length})</td>
                 </tr>
-              )
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td className="p-1">
-                <IndeterminateCheckbox
-                  {...{
-                    checked: table.getIsAllPageRowsSelected(),
-                    indeterminate: table.getIsSomePageRowsSelected(),
-                    onChange: table.getToggleAllPageRowsSelectedHandler(),
+              </tfoot>
+            </table>
+            <div className="h-2" />
+            <br />
+            <br />
+            <div className="flex items-center gap-2">
+              <button
+                className="border rounded p-1"
+                onClick={() => table.setPageIndex(0)}
+                disabled={!table.getCanPreviousPage()}
+              >
+                {'<<'}
+              </button>
+              <button
+                className="border rounded p-1"
+                onClick={() => table.previousPage()}
+                disabled={!table.getCanPreviousPage()}
+              >
+                {'<'}
+              </button>
+              <button
+                className="border rounded p-1"
+                onClick={() => table.nextPage()}
+                disabled={!table.getCanNextPage()}
+              >
+                {'>'}
+              </button>
+              <button
+                className="border rounded p-1"
+                onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                disabled={!table.getCanNextPage()}
+              >
+                {'>>'}
+              </button>
+              <span className="flex items-center gap-1">
+                <div>Page</div>
+                <strong>
+                  {table.getState().pagination.pageIndex + 1} of{' '}
+                  {table.getPageCount()}
+                </strong>
+              </span>
+              <br />
+              <span className="flex items-center gap-1">
+                | Go to page:
+                <input
+                  type="number"
+                  defaultValue={table.getState().pagination.pageIndex + 1}
+                  onChange={e => {
+                    const page = e.target.value ? Number(e.target.value) - 1 : 0
+                    table.setPageIndex(page)
                   }}
+                  className="border p-1 rounded w-16"
                 />
-              </td>
-              <td colSpan={20}>Page Rows ({table.getRowModel().rows.length})</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div className="h-2" />
-        <br/>
-        <br/>
-        <div className="flex items-center gap-2">
-          <button
-            className="border rounded p-1"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {'<<'}
-          </button>
-          <button
-            className="border rounded p-1"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {'<'}
-          </button>
-          <button
-            className="border rounded p-1"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {'>'}
-          </button>
-          <button
-            className="border rounded p-1"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            {'>>'}
-          </button>
-          <span className="flex items-center gap-1">
-            <div>Page</div>
-            <strong>
-              {table.getState().pagination.pageIndex + 1} of{' '}
-              {table.getPageCount()}
-            </strong>
-          </span>
-          <br/>
-          <span className="flex items-center gap-1">
-            | Go to page:
-            <input
-              type="number"
-              defaultValue={table.getState().pagination.pageIndex + 1}
-              onChange={e => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                table.setPageIndex(page)
-              }}
-              className="border p-1 rounded w-16"
-            />
-          </span>
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={e => {
-              table.setPageSize(Number(e.target.value))
-            }}
-          >
-            {[10, 20, 30, 40, 50].map(pageSize => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-        <br />
-        <div>
-          {Object.keys(rowSelection).length} of{' '}
-          {table.getPreFilteredRowModel().rows.length} Total Rows Selected
-        </div>
-        <hr />
-        <br />
-        <br />
-        <br />
-        <div>
-          <button className="lyds-button" onClick={() => rerender()}>
-            Approve Selected Tickets
-          </button>
-        
-          <button className="lyds-button" onClick={() => rerender()}>
-            Force Rerender
-          </button>
-          <button className='lyds-button' onClick={() => refreshData()}>
-            Refresh Data
-          </button>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <div>
-          <button
-            className="border rounded p-2 mb-2"
-            onClick={() =>
-              console.info(
-                'table.getSelectedRowModel().flatRows',
-                table.getSelectedRowModel().flatRows
-              )
-            }
-          >
-            Log table.getSelectedRowModel().flatRows
-          </button>
-        </div>
-        <div>
-          <label>Row Selection State:</label>
-          <pre>{JSON.stringify(table.getState().rowSelection, null, 2)}</pre>
-        </div>
-      </div>
-      </form>
+              </span>
+              <select
+                value={table.getState().pagination.pageSize}
+                onChange={e => {
+                  table.setPageSize(Number(e.target.value))
+                }}
+              >
+                {[10, 20, 30, 40, 50].map(pageSize => (
+                  <option key={pageSize} value={pageSize}>
+                    Show {pageSize}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <br />
+            <div>
+              {Object.keys(rowSelection).length} of{' '}
+              {table.getPreFilteredRowModel().rows.length} Total Rows Selected
+            </div>
+            <hr />
+            <br />
+            <br />
+            <br />
+            <div>
+              <button className="lyds-button" onClick={() => rerender()}>
+                Approve Selected Tickets
+              </button>
+
+              <button className="lyds-button" onClick={() => rerender()}>
+                Force Rerender
+              </button>
+              <button className='lyds-button' onClick={() => refreshData()}>
+                Refresh Data
+              </button>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div>
+              <button
+                className="border rounded p-2 mb-2"
+                onClick={() =>
+                  console.info(
+                    'table.getSelectedRowModel().flatRows',
+                    table.getSelectedRowModel().flatRows
+                  )
+                }
+              >
+                Log table.getSelectedRowModel().flatRows
+              </button>
+            </div>
+            <div>
+              <label>Row Selection State:</label>
+              <pre>{JSON.stringify(table.getState().rowSelection, null, 2)}</pre>
+            </div>
+          </div>
+        </form>
+      </>
     )
   }
-  else
-    {
-        return (
-            <h1 className='screenheader'>You are not authorized</h1>  
-        )
-    }
-  
+  else {
+    return (
+      <h1 className='screenheader'>You are not authorized</h1>
+    )
+  }
+
 }
 
 function Filter({
@@ -370,8 +372,8 @@ const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
 
 ReactDOM.createRoot(rootElement).render(
-  <React.StrictMode>
-      <SelAndApproveTickets2 />
-      <p>{level}</p>
-  </React.StrictMode>
+  <>
+    <SelAndApproveTickets2 />
+    <p>{level}</p>
+  </>
 )

@@ -12,13 +12,14 @@ import SelectPlatformLabFeatureTeamRole from "./components/CreateNewRequest";
 import SelAndApproveTickets from "./components/CreateNewReq";
 import SelAndApproveTickets2 from "./components/ApproveTable";
 import Login from "./components/Login";
+import LoginLayout from "./components/LoginLayout";
 export default function App() {
 
 
 
   return (
       <>
-      <Layout/>
+      <LoginLayout/>
       </>
    
   );

@@ -98,6 +98,8 @@ export default function EmployeeTicketsTable() {
   }, [columns]);
 
   return (
+    <>
+    <h1 className="screenheader">Employee Dashboard</h1>
     <form className="form">
       <DataTable
         columns={columns || []}
@@ -107,5 +109,6 @@ export default function EmployeeTicketsTable() {
         expandableRowsComponent={ExpandedComponent}
       />
     </form>
+    </>
   );
 }

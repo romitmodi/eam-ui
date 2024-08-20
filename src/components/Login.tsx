@@ -31,13 +31,18 @@ export const Login = () => {
           <br />
           <br />
           <button className="lyds-button">
-            <a href="/EmployeeDashBoard">Login</a>
+            <a href="/Layout/EmployeeDashBoard" onClick={()=>hide()}>Login</a>
           </button>
         </form>
       </div>
-      <Outlet />
     </>
   );
 };
+
+function hide(){
+  let element: any = document.getElementById("loginButton");
+  element.style.display = "none";
+}
+
 
 export default Login;

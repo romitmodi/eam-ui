@@ -18,40 +18,32 @@ function setLvl(level:number)
 
 
   return (
-    <div className="App">
-      <header style={{ display: "flex" }}>
-        <img src="https://lloydstechnologycentre.com/assets/site/lloyds-logo.svg" alt="logo" />
-        <br/>
-        <title>EMA</title>
-        <h1 style={{marginInline: "auto"}}>EMA Application</h1>
-        
-        <Avatar skypeId="sitebase" name="Wim Mostmans" color="green" round={true} size="50"  style={{mar: "auto"}}/>
-       
-      </header>
+    <>
+    <br/>
       <div className="dashButtons" style={{ display: "flex" }}>
-        
-      <button className="lyds-dash-button" onClick={() => navigate('Login', { replace: true })}>
-          Login
-        </button>
-
         <button className="lyds-dash-button" onClick={() => navigate('EmployeeDashBoard', { replace: true })}>
           Employee Dashboard
         </button>
 
-        <button className="lyds-dash-button" onClick={() => navigate('ApprovReqs', { replace: true })}>
+        <button className="lyds-dash-button" onClick={() => navigate('ApprovReqs', { replace: false })}>
           Approval Request
         </button>
 
-        <button className="lyds-dash-button" onClick={() => navigate('NewReq', { replace: true })}>
+        <button className="lyds-dash-button" onClick={() => navigate('NewReq', { replace: false })}>
           New Request
         </button>
-        <button className="lyds-dash-button" style={{ marginLeft: "auto" }} onClick={() => navigate('MyProfile', { replace: true })}>
+        <button className="lyds-dash-button" style={{ marginLeft: "auto" }} onClick={() => navigate('MyProfile', { replace: false })}>
           My Profile
         </button>
       </div>
       <Outlet />
-    </div>
+    </>
   )
 };
+function hide(){
+  let element: any = document.getElementById("loginButton");
+  element.innerText = "Home";
+}
+
 
 export default Layout;
